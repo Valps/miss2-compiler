@@ -1,2 +1,2 @@
 # miss2-compiler
-Compiler in python
+Work in progress Python compiler for GTA2 scripts.
