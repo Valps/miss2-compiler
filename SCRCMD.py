@@ -283,6 +283,8 @@ class TokenType(StrEnum):
     DOOR_OPEN_TYPE = auto()
     BLOCK_FACE = auto()
 
+    DATA_CREATE_END = "END"
+
     EQUAL = '='
     PLUS = '+'
     MINUS = '-'
