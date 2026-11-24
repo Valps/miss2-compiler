@@ -25,7 +25,7 @@ def get_token_type_from_string(word : str) -> TokenType:
 
     id = None
 
-    if (id := get_index_from_array(word_upper, SCR_COMMANDS)) is not None:
+    if (id := get_index_from_array(word_upper, SCR_COMMAND_KEYWORDS)) is not None:
         return (TokenType.COMMAND, id)
     elif (id := get_index_from_array(word_upper, SCR_OBJECTS)) is not None:
         return (TokenType.OBJECT, id)
