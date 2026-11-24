@@ -11,24 +11,97 @@ ALLOWED_CONCAT_FLOAT_PUNCT = ",():"
 class Token:
     type: TokenType
     value: Any = None
+    id: int = None
+
+def get_index_from_array(value, array : list):
+    try:
+        return array.index(value)
+    except ValueError:
+        return None
 
 
 def get_token_type_from_string(word : str) -> TokenType:
     word_upper = word.upper()
-    if word_upper in SCR_COMMANDS:
-        return TokenType.COMMAND
-    elif word_upper in SCR_OBJECTS:
-        return TokenType.OBJECT
-    elif word_upper in SCR_CARS:
-        return TokenType.CAR
-    elif word_upper in SCR_SOUNDS:
-        return TokenType.SOUND
-    
-    # ...
 
+    id = None
+
+    if (id := get_index_from_array(word_upper, SCR_COMMANDS)) is not None:
+        return (TokenType.COMMAND, id)
+    elif (id := get_index_from_array(word_upper, SCR_OBJECTS)) is not None:
+        return (TokenType.OBJECT, id)
+    elif (id := get_index_from_array(word_upper, SCR_CARS)) is not None:
+        return (TokenType.CAR, id)
+    elif (id := get_index_from_array(word_upper, SCR_SOUNDS)) is not None:
+        return (TokenType.SOUND, id)
+    elif (id := get_index_from_array(word_upper, SCR_OBJECTIVES)) is not None:
+        return (TokenType.OBJECTIVE, id)
+    elif (id := get_index_from_array(word_upper, SCR_OCCUPATIONS)) is not None:
+        return (TokenType.OCCUPATION, id)
+    elif (id := get_index_from_array(word_upper, SCR_DAMAGE_TYPE)) is not None:
+        return (TokenType.DAMAGE_TYPE, id)
+    elif (id := get_index_from_array(word_upper, SCR_WEAPONS)) is not None:
+        return (TokenType.WEAPON, id)
+    elif (id := get_index_from_array(word_upper, SCR_RADIO_STATIONS)) is not None:
+        return (TokenType.RADIO_STATION, id)
+    elif (id := get_index_from_array(word_upper, SCR_TRAIN_TYPE)) is not None:
+        return (TokenType.TRAIN_TYPE, id)
+    elif (id := get_index_from_array(word_upper, SCR_THREAT_SEARCH_TYPE)) is not None:
+        return (TokenType.THREAT_SEARCH_TYPE, id)
+    elif (id := get_index_from_array(word_upper, SCR_THREAT_REACTION_TYPE)) is not None:
+        return (TokenType.THREAT_REACTION_TYPE, id)
+    elif (id := get_index_from_array(word_upper, SCR_LOCKS)) is not None:
+        return (TokenType.CAR_DOOR_LOCK, id)
+    elif (id := get_index_from_array(word_upper, SCR_GROUP_FOLLOW_TYPE)) is not None:
+        return (TokenType.GROUP_FOLLOW_TYPE, id)
+    elif (id := get_index_from_array(word_upper, SCR_EXCLUSIVE)) is not None:
+        return (TokenType.EXCLUSIVE, id)
+    elif (id := get_index_from_array(word_upper, SCR_COLOURS)) is not None:
+        return (TokenType.COLOUR, id)
+    elif (id := get_index_from_array(word_upper, SCR_CHAR_OVERLAY)) is not None:
+        return (TokenType.CHAR_OVERLAY, id)
+    elif (id := get_index_from_array(word_upper, SCR_BRAVERY)) is not None:
+        return (TokenType.BRAVERY, id)
+    elif (id := get_index_from_array(word_upper, SCR_BONUS_TYPE)) is not None:
+        return (TokenType.BONUS_TYPE, id)
+    elif (id := get_index_from_array(word_upper, SCR_BONUS_WHICH)) is not None:
+        return (TokenType.BONUS_WHICH, id)
+    elif (id := get_index_from_array(word_upper, SCR_ACCURACY)) is not None:
+        return (TokenType.ACCURACY, id)
+    elif (id := get_index_from_array(word_upper, SCR_SOUND_PLAY_TYPE)) is not None:
+        return (TokenType.SOUND_PLAY_TYPE, id)
+    elif (id := get_index_from_array(word_upper, SCR_CAR_DAMAGE_POS)) is not None:
+        return (TokenType.CAR_DAMAGE_POS, id)
+    elif (id := get_index_from_array(word_upper, SCR_DROPS)) is not None:
+        return (TokenType.BLOCK_DROP, id)
+    elif (id := get_index_from_array(word_upper, SCR_ROTATION_LIST)) is not None:
+        return (TokenType.ROTATION_LIST, id)
+    elif (id := get_index_from_array(word_upper, SCR_BULLETWALL_TYPES)) is not None:
+        return (TokenType.BULLETWALL_TYPE, id)
+    elif (id := get_index_from_array(word_upper, SCR_WALL_TYPES)) is not None:
+        return (TokenType.WALL_TYPE, id)
+    elif (id := get_index_from_array(word_upper, SCR_BLOCK_TYPES)) is not None:
+        return (TokenType.BLOCK_TYPE, id)
+    elif (id := get_index_from_array(word_upper, SCR_BLOCK_FLAT_TYPES)) is not None:
+        return (TokenType.BLOCK_FLAT_TYPE, id)
+    elif (id := get_index_from_array(word_upper, SCR_BLOCK_FLIP_TYPES)) is not None:
+        return (TokenType.BLOCK_FLIP_TYPE, id)
+    elif (id := get_index_from_array(word_upper, SCR_ON_OFF)) is not None:
+        return (TokenType.ON_OFF, id)
+    elif (id := get_index_from_array(word_upper, SCR_CRANE_TYPES)) is not None:
+        return (TokenType.CRANE_TYPE, id)
+    elif (id := get_index_from_array(word_upper, SCR_DOOR_REVERSED)) is not None:
+        return (TokenType.DOOR_REVERSED, id)
+    elif (id := get_index_from_array(word_upper, SCR_DOOR_FLIP_TYPES)) is not None:
+        return (TokenType.DOOR_FLIP_TYPE, id)
+    elif (id := get_index_from_array(word_upper, SCR_DOOR_CLOSE_TYPES)) is not None:
+        return (TokenType.DOOR_CLOSE_TYPE, id)
+    elif (id := get_index_from_array(word_upper, SCR_DOOR_OPEN_TYPES)) is not None:
+        return (TokenType.DOOR_OPEN_TYPE, id)
+    elif (id := get_index_from_array(word_upper, SCR_BLOCK_FACES)) is not None:
+        return (TokenType.BLOCK_FACE, id)
 
     else:
-        return TokenType.STRING
+        return (TokenType.STRING, None)
 
 
 class Tokenizer:
@@ -149,5 +222,6 @@ class Tokenizer:
 
                 word_str = word_str.strip()
 
-                return Token(get_token_type_from_string(word_str), word_str)
+                token_type, scr_id = get_token_type_from_string(word_str)
+                return Token(token_type, word_str, scr_id)
             
