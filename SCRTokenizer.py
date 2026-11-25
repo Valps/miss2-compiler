@@ -100,6 +100,10 @@ def get_token_type_from_string(word : str) -> TokenType:
     elif (id := get_index_from_array(word_upper, SCR_BLOCK_FACES)) is not None:
         return (TokenType.BLOCK_FACE, id)
     
+    
+    elif word_upper == "NO_HOMECRANE":
+        return (TokenType.CRANE_NO_HOME, None)
+    
     elif word_upper == "END":
         return(TokenType.DATA_CREATE_END, None)
 
