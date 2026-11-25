@@ -70,12 +70,7 @@ def tokenize_mis_file():
 
 
 
-def get_grammar():
-    grammar_list = []
-    for pattern in SCR_TOKEN_RULES_STR:
-        grammar_list.append(list(Tokenizer(pattern))[:-1])
-    
-    return grammar_list
+
 
 
 def test_grammar():
