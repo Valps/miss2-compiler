@@ -120,7 +120,7 @@ class Tokenizer:
 
 
     def __iter__(self):
-        while (token := self.next_token()) != TokenType.EOF:
+        while (token := self.next_token()).type != TokenType.EOF:
             yield token
         yield token     # also yield the end of line
     
