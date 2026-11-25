@@ -139,6 +139,8 @@ class Tokenizer:
         one_line_comment = False
         scope_comment = False
 
+        negative_number = False
+
         while True:
         
             if self.ptr == len(self.code):
@@ -186,7 +188,14 @@ class Tokenizer:
                 return Token(TokenType.PLUS)
             
             if char == "-":
-                return Token(TokenType.MINUS)
+                next_char = self.peek()
+                
+                if next_char in digits:
+                    negative_number = True
+                    continue
+                else:
+                    return Token(TokenType.MINUS)
+                    
             
             if char == ":":
                 return Token(TokenType.COLON)
@@ -203,6 +212,10 @@ class Tokenizer:
                 for punct in punctuation:
                     if punct != '.' and punct in number_str:
                         raise Exception(f"Invalid number on line {self.curr_line}: '{number_str}'")
+
+                if negative_number:
+                    number_str = f"-{number_str}"
+                    negative_number = False
                     
                 for letter in ascii_letters:
                     if letter in number_str:
