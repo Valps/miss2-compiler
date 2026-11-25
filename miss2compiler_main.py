@@ -1,5 +1,6 @@
 from SCRTokenizer import Tokenizer, TokenType
 from SCRGrammar import SCR_TOKEN_RULES_STR
+from SCRCMD import SCR_COMMAND_KEYWORDS, SCR_COMMANDS_TM     # debug only
 from pathlib import Path
 
 
@@ -35,8 +36,8 @@ TEST_CODE = "PLAYER_PED p1 = (108.5,150.5,255.0) 0 1"
 
 TEST_CODE = "WHILE_EXEC ( ( NOT ( IS_CHAR_PRESSING_HORN(p1) ) ) OR ( player_fit_conditions = 0 ) )"
 
-def test_tokenizer():
-    list_of_tokens = Tokenizer(TEST_CODE)
+def test_tokenizer(code : str):
+    list_of_tokens = Tokenizer(code)
     for token in list_of_tokens:
 
         if token.type == TokenType.STRING or token.type == TokenType.INT or token.type == TokenType.FLOAT or token.type == TokenType.COMMAND:
@@ -77,13 +78,21 @@ def get_grammar():
     return grammar_list
 
 
-def main():
-    #test_tokenizer()
-    #tokenize_mis_file()
+def test_grammar():
     grammar_list = get_grammar()
     for pattern in grammar_list:
         #print([token.value if token.value is not None else str(token.type) for token in pattern])
         print([str(token.type) for token in pattern])
+
+def main():
+    #TEST_CODE = "-5"
+    #test_tokenizer(TEST_CODE)
+    #tokenize_mis_file()
+    #num = 120
+    print(SCR_TOKEN_RULES_STR[-1])
+    print(SCR_COMMANDS_TM[len(SCR_TOKEN_RULES_STR) - 1 + 5])
+
+
 
 if __name__ == "__main__":
     main()
