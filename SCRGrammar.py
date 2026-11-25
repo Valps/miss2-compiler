@@ -66,7 +66,7 @@ SCR_TOKEN_RULES_STR = [
     "ENDEXEC",
     "FOR",
     "DO",
-    "my_function:"
+    "my_function:",
     "RETURN", 
     "WHILE", 
     "WHILE_EXEC", 
@@ -179,8 +179,11 @@ SCR_TOKEN_RULES_STR = [
     "IS_CHAR_FIRING_ONSCREEN (name)",
     "ORDER_DRIVER_OUT_CAR (charname)",
     "ORDER_CHAR_TO_DRIVE_CAR (charname, car_name)",
-    "ANSWER_PHONE (char_name, telephone_name, -1)",     # TODO: test negative numbers
+    "ANSWER_PHONE (char_name, telephone_name, -1)",
     "SEND_CAR_TO_BLOCK (car_name, 123.5, 45.5, 2.0)",
     "GIVE_DRIVER_AND_BRAKE (car_name)",
+    "ORDER_CHAR_TO_BACKDOOR (charname, car_name)",
+    "PLAY_SOUND (sound)",    # undocumented
+    "SET_CAR_NO_COLLIDE (car_name)",
 ]
 
