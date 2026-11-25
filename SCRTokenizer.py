@@ -10,6 +10,7 @@ ALLOWED_CONCAT_FLOAT_PUNCT = ",():"
 @dataclass
 class Token:
     type: TokenType
+    line: int
     value: Any = None
     id: int = None
 
@@ -144,7 +145,7 @@ class Tokenizer:
         while True:
         
             if self.ptr == len(self.code):
-                return Token(TokenType.EOF)
+                return Token(TokenType.EOF, self.curr_line)
             
             char = self.code[self.ptr]
             self.ptr += 1
@@ -173,19 +174,19 @@ class Tokenizer:
             # punctuation chars
 
             if char == ",":
-                return Token(TokenType.COMMA)
+                return Token(TokenType.COMMA, self.curr_line)
             
             if char == "(":
-                return Token(TokenType.OPEN_BRACKET)
+                return Token(TokenType.OPEN_BRACKET, self.curr_line)
             
             if char == ")":
-                return Token(TokenType.CLOSE_BRACKET)
+                return Token(TokenType.CLOSE_BRACKET, self.curr_line)
             
             if char == "=":
-                return Token(TokenType.EQUAL)
+                return Token(TokenType.EQUAL, self.curr_line)
             
             if char == "+":
-                return Token(TokenType.PLUS)
+                return Token(TokenType.PLUS, self.curr_line)
             
             if char == "-":
                 next_char = self.peek()
@@ -194,11 +195,11 @@ class Tokenizer:
                     negative_number = True
                     continue
                 else:
-                    return Token(TokenType.MINUS)
+                    return Token(TokenType.MINUS, self.curr_line)
                     
             
             if char == ":":
-                return Token(TokenType.COLON)
+                return Token(TokenType.COLON, self.curr_line)
             
             # digits and letters (numbers and strings)
             
@@ -222,11 +223,11 @@ class Tokenizer:
                         raise Exception(f"Invalid number on line {self.curr_line}: '{number_str}'")
                 
                 if number_str.count('.') == 1:
-                    return Token(TokenType.FLOAT, Decimal(number_str))
+                    return Token(TokenType.FLOAT, self.curr_line, Decimal(number_str))
                 elif number_str.count('.') > 1:
                     raise Exception(f"Invalid float on line {self.curr_line}: '{number_str}'")
                 else:
-                    return Token(TokenType.INT, int(number_str))
+                    return Token(TokenType.INT, self.curr_line, int(number_str))
                 
             
             elif char in ascii_letters:
@@ -243,5 +244,5 @@ class Tokenizer:
                 word_str = word_str.strip()
 
                 token_type, scr_id = get_token_type_from_string(word_str)
-                return Token(token_type, word_str, scr_id)
+                return Token(token_type, self.curr_line, word_str, scr_id)
             
