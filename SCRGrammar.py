@@ -90,7 +90,7 @@ SCR_TOKEN_RULES_STR = [
     "2 - num",
     "ab - cd",
 
-    "SET my_counter = "  # obs: different pattern here!
+    "SET my_counter = ",  # obs: different pattern here!
 
     "num < 1",
     "a < b",
@@ -109,7 +109,78 @@ SCR_TOKEN_RULES_STR = [
 
     "FORWARD do_kill_frenzy_1:",
     "MAKE_CAR_A_DUMMY (name)",
+
     "MAP_ZONE name",
-    "MAP_ZONE City01 = (1000,350,200,000, 1000,100,100,100,700,000)"  # OBS: test for 10 or 11 params
+    "MAP_ZONE City01 = (1000,350,200,000, 1000,100,100,100,700,000)",  # OBS: test for 10 or 11 params
+
+    "SET_CAR_DENSITY (zone_name, 300)",
+    "SET_GOODCAR_RATIO (zone_name, 300)",
+    "SET_BADCAR_RATIO (zone_name, 300)",
+    "SET_POLICECAR_RATIO (zone_name, 300)",
+    "SET_PEDDENSITY (zone_name, 300)", 
+	"SET_MUGGER_RATIO (zone_name, 300)", 
+    "SET_CARTHIEF_RATIO (zone_name, 300)", 
+    "SET_ELVIS_RATIO (zone_name, 300)", 
+    "SET_GANG_RATIO (zone_name, 300)", 
+    "SET_POLICEPED_RATIO (zone_name, 300)",
+
+    "POINT_ARROW_AT (arrow_name, name)",
+    "POINT_ARROW_AT (arrow_name, 103.5 , 131.0, 2.0)",
+    "SET_ARROW_COLOUR (arrow_name, YELLOW)",
+    "REMOVE_ARROW (arrow_name)",
+    "DISPLAY_MESSAGE (1605)",
+    "DISPLAY_BRIEF (1105)",
+    "DISPLAY_TIMER (z_h_1_timer, 360)",
+    "CLEAR_TIMER (z_h_1_timer)",
+    "IS_CHARACTER_IN_CAR (charname, car_name)",
+    "IS_CHARACTER_IN_MODEL (charname, TANK)",
+    "IS_CHARACTER_IN_ANY_CAR (charname)",
+    "IS_CHARACTER_STOPPED (charname)",
+    "IS_CHAR_STUNNED (charname)",
+    "CHECK_CHARACTER_HEALTH (charname, 50)",
+    "HAS_CHARACTER_DIED (charname)",
+    "STORE_CAR_CHARACTER_IS_IN (charname, car_name)",
+    "CHECK_CAR_DAMAGE_LEVEL (car_name, 50)",
+    "CHECK_CAR_HAS_DRIVER (car_name)",
+    "SET_CHAR_OBJECTIVE (charname, WAIT_ON_FOOT)",
+    "SET_CHAR_OBJECTIVE (charname, ENTER_CAR_AS_DRIVER, name)",
+    "SET_CHAR_OBJECTIVE (charname, GOTO_AREA_IN_CAR, 30.5, 16.5, 2.0)",
+    "IS_CHAR_OBJECTIVE_PASSED (charname)",
+    "IS_CHAR_OBJECTIVE_FAILED (charname)",
+    "SEND_CHAR_FOOT (charname, undocumented)",
+    "SEND_CHAR_CAR (charname, undocumented)",
+    "GIVE_WEAPON (charname, ROCKET_LAUNCHER)", # GIVE_WEAPON1
+    "IS_CAR_IN_BLOCK (car_name, 30.5, 16.5, 2.0)",  # IS_CAR_IN_BLOCK vs CAR_IN_AREA
+    "DELETE_ITEM (name)",
+    "ADD_SCORE (player_name, 20000)",
+    "EXPLODE (30.5, 16.5, 2.0)",
+    "EXPLODE_WALL (30.5, 16.5, 2.0) RIGHT",
+    "EXPLODE (item_name)",
+    "LOCATE_CHARACTER_ANY_MEANS (charname, 123.5, 45.5, 2.0, 3.0, 1.0)",
+    "LOCATE_CHARACTER_ON_FOOT (charname, 123.5, 45.5, 2.0, 3.0, 1.0)",
+    "LOCATE_CHARACTER_BY_CAR (charname, 123.5, 45.5, 2.0, 3.0, 1.0)",
+    "LOCATE_STOPPED_CHARACTER_ANY_MEANS (charname, 123.5, 45.5, 2.0, 3.0, 1.0)",
+    "LOCATE_STOPPED_CHARACTER_ON_FOOT (charname, 123.5, 45.5, 2.0, 3.0, 1.0)",
+    "LOCATE_STOPPED_CHARACTER_BY_CAR (charname, 123.5, 45.5, 2.0, 3.0, 1.0)",
+    "SET_CHAR_THREAT_SEARCH (guard_one, LINE_OF_SIGHT_PLAYER_ONLY)",
+    "SET_CHAR_THREAT_REACTION (mayor_char, RUN_AWAY)",
+    "ADD_GROUP_TO_CHARACTER (enemyleader, 3)",
+    "IS_CAR_WRECKED (car_name)",
+    "CHANGE_CAR_REMAP (car_name, 2)",
+    "CHANGE_CHAR_REMAP (char_name, 2)",
+    "CHECK_CAR_MODEL (car_name, TANK)",
+    "CHECK_CAR_REMAP (car_name, 2)",
+    "CHECK_CAR_MODEL_AND_REMAP (car_name, TANK, 2)",
+    "IS_ITEM_ONSCREEN (item_name)",
+    "DELAY_HERE (50)",
+    "DELAY (200)",
+    "CLEAR_WANTED_LEVEL (p1)",
+    "ALTER_WANTED_LEVEL (p1, 6)",
+    "IS_CHAR_FIRING_ONSCREEN (name)",
+    "ORDER_DRIVER_OUT_CAR (charname)",
+    "ORDER_CHAR_TO_DRIVE_CAR (charname, car_name)",
+    "ANSWER_PHONE (char_name, telephone_name, -1)",     # TODO: test negative numbers
+    "SEND_CAR_TO_BLOCK (car_name, 123.5, 45.5, 2.0)",
+    "GIVE_DRIVER_AND_BRAKE (car_name)",
 ]
 
